@@ -24,6 +24,7 @@ export default function RootLayout({
         >
           <Link href="/">Главная</Link>
           <Link href="/about">О проекте</Link>
+          <Link href="/bulletResolver">Bullet Resolver</Link>
         </header>
         <main style={{ padding: '1.5rem' }}>{children}</main>
       </body>

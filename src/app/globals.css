@@ -13,3 +13,23 @@ body {
 a {
   color: inherit;
 }
+
+.digit-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.digit {
+  width: 2rem;
+  display: block;
+  margin-right: 0.5rem;
+}
+
+.digit:last-child {
+  font-weight: bold;
+}
+
+.highlight {
+  color: #4ccb28;
+  font-weight: bold;
+}
