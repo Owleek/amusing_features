@@ -35,7 +35,6 @@ const groupByType = (arg: typeof arr) => {
 console.log(JSON.stringify(groupByType(arr)))
 
 
-
 // 3
 
 // Имеется исходный массив плоских данных
