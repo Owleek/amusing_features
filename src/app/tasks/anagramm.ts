@@ -1,18 +1,18 @@
 // Группировка односоставных слов
 
-// 1. Хитрый способ
+// Неверное решение, сумма разных может давать одинаковую сумму
 
-const groupAnagrams = (arr: string[]) => {
+const WronggroupAnagrams = (arr: string[]) => {
     const obj: Record<string, string[]> = {}
     
     arr.forEach(str => {
       const keyStorage = [];
       
       for (let i = 0; i < str.length; i++) {
-        keyStorage.push(str.charCodeAt(i))
+        keyStorage.push(str.codePointAt(i))
       }
 
-      const sum = keyStorage.reduce((acc, curr) => acc += curr, 0) + '';
+      const sum = keyStorage.reduce((acc, curr) => acc! += curr!, 0) + '';
       obj.hasOwnProperty(sum) ? obj[sum].push(str) : obj[sum] = [str]
     })
 
@@ -20,6 +20,17 @@ const groupAnagrams = (arr: string[]) => {
 };
 
 
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); // [["bat"],["nat","tan"],["ate","eat","tea"]]
+// Правильное решение
 
-// 2. Algo
+const groupAnagrams = (arr: string[]) => {
+    const result: Record<string, string[]> = {}
+
+    arr.forEach(stringValue => {
+      const sortedString = stringValue.split('').sort().join('')
+      result[sortedString] ? result[sortedString].push(stringValue) : result[sortedString] = [stringValue]
+    })
+
+    return Object.values(result)
+};
+
+console.log(groupAnagrams(["eat", "tea", "eettttaaaa", "tan", "ate", "nat", "bat"]));
