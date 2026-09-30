@@ -23,3 +23,21 @@ function findSum(arr: number[], sum: number) {
 
 
 console.log(findSum([1, 2, 3, 4, 5, 5, 6, 7, 8], 9)) // [1, 8]
+
+
+function findSum2(arr: number[], sum: number) { 
+    const map = new Map()
+
+    for (let i = 0; i < arr.length; i++) {
+        const cur = arr[i]
+        const neededNum = sum - cur
+
+        if (map.has(neededNum)) {
+            return [cur, neededNum]
+        }
+
+        if (!map.has(cur)) map.set(cur, i)
+    }
+
+    return []
+}
