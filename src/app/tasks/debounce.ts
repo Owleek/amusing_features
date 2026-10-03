@@ -1,5 +1,5 @@
 function debounce(callback: () => {}, time: number) {
-    let timeOut: number | null = null
+    let timeOut: number | null = 1
 
     function deffferedCall (args: unknown[]) {
         timeOut = setTimeout(() => {
