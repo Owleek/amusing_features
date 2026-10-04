@@ -1,3 +1,5 @@
+//debounce
+
 function debounce(callback: () => {}, time: number) {
     let timeOut: number | null = 1
 
@@ -30,7 +32,38 @@ const log = (srt: string) => {
 //@ts-ignore
 const debouncedLog = debounce(log, 1)
 
-log('1')
-log('2')
-log('3')
+debouncedLog('asd')
+debouncedLog('werw')
+debouncedLog('svsss')
 
+//throttle
+
+function throttle(callback: () => {}, time: number) {
+    let canCall = false
+    let last_timestamp = performance.now()
+    
+
+    let interval = setInterval(() => {
+        const current_timestamp = performance.now()
+        if (current_timestamp - last_timestamp >= time) {
+            last_timestamp = current_timestamp
+            canCall = true
+        }
+    }, time)
+ 
+
+    return (...rest: unknown[]) => {    
+        if (!canCall) return
+        //@ts-ignore
+        callback(...rest)
+        canCall = false
+    }
+}
+
+const anotherlog = (srt: string) => {
+    console.log(srt)
+}
+
+//@ts-ignore
+const throttledLog = throttle(anotherlog, 1000)
+setInterval(() => throttledLog("loasdasdas"), 10)
