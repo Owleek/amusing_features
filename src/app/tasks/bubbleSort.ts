@@ -1,10 +1,10 @@
 function sortBubble(arr: number[]) {
   const _arr = [...arr]
-  let lastActive = _arr.length - 1
+  let count = _arr.length - 1
+  let last = _arr.length - 1
 
-  for (let i = 0; i < lastActive; i++) {
-
-    for (let j = 0; j < lastActive; j++) {
+  for (let i = 0; i < count; i++) {
+    for (let j = 0; j < last; j++) {
       const curr = _arr[j]
       const next = _arr[j + 1]
       if (curr < next) continue
@@ -12,7 +12,7 @@ function sortBubble(arr: number[]) {
       _arr[j + 1] = curr
     }
 
-    lastActive--
+    last--
   }
 
   return _arr
